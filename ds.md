@@ -71,7 +71,7 @@
 
 10. Binary search tree: AVL, Splay, (2,4) tree, red-black tree
 
-    * Binary search tree: 缺点是当插入的元素基本是有序的时候,会退化成链表. 但是`self-balancing tree`就不会有这些问题.
+    * Binary search tree: 缺点是当插入的元素基本是有序的时候,会退化成链表. 但是`self-balancing tree`(高度是**θ(log n)**)就不会有这些问题.
 
         I. `find()`: 如果key比当前结点小,向左遍历,如果key比当前结点大,向右遍历,否则当前结点就是key
 
@@ -82,6 +82,34 @@
         IV. `remove()`: 利用`find()`找到这个结点N,如果N没有孩子,直接删掉,如果N有一个子节点,将子节点上移就可以了.如果N有两个子结点,将右子节点的最小结点拿过来替代N.
     
     * AVL Tree: 对于任意结点左子树和右子树的高度最多只能相差1
+
+        定义：
+        ```cpp
+        class AVLTreeNode{
+            int val;
+            int height;
+            AVLTreeNode* parent;
+            AVLTreeNode* left;
+            AVLTreeNode* right;
+        }
+
+        class AVLTree{
+            AVLTreeNode* root;
+            int height(AVLTreeNode* node);
+            void updateHeight(AVLTreeNode* node);
+            void leftRotate(AVLTreeNode* node);
+            void rightRotate(AVLTreeNode* node);
+            void rebalance(AVLTreeNode* node);
+        }
+        ```
+        
+        I. AVL tree的高度是O(log n). 证明：N(h) = 高度为h的AVL树最少有多少个节点(递归定义)。
+
+        II. 高度的定义： H(n) = max(H(n.left), H(n.right)) + 1. 空节点的高度为-1（可以省去对空节点的特殊处理）
+
+        III. 插入： 和BST一样的插入方式，然后调整（BST特点和平衡的特点）
+
+        IV. 删除： 和BST一样的删除方式， 然后调整
 
     * Splay tree
 
