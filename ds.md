@@ -111,9 +111,35 @@
 
         IV. 删除： 和BST一样的删除方式， 然后调整
 
-    * Splay tree
+    * Splay tree: 也是一种二叉树,但是没有log界的高度.在查找,删除和插入中会尽量将最近访问的元素放到树的顶部. 操作平均的时间复杂度都是O(log n).
+
+        I. `find()`: 在查找完之后, 对终止结点进行调整,调整到树的根.这些调整会降低树的高度. 调整过程分3类.
+
+        II. `insert()`: 插入元素,并将插入元素调整到`root`.
+
+        III. `remove()`: 删除元素,并将删除元素的父节点调整到`root`.
 
     * Red-black tree
+
+        定义:
+        ```cpp
+        class RBTreeNode{
+            int val;
+            bool is_black;
+            RBTreeNode* parent;
+            RBTreeNode* left;
+            RBTreeNode* right;
+        };
+
+        class RBTree{
+            RBTreenode* root;
+            void rebalance(RBTreeNode* node);
+            void leftRotate(RBTreeNode* node);
+            void rightRotate(RBTreeNode* node);
+        }
+        ```
+        
+        新插入的结点总是先设置为*red*, 因为这样不会破坏*black-height*的特性.在进行*rebalance*的过程中,采用重新涂色和旋转的方式.
 
     * 2-3-4 tree
 
