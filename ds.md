@@ -143,6 +143,18 @@
 
     * 2-3-4 tree
 
+    * Treaps: 每一个节点都有一个*search key*和一个*priority*. *search key*满足二叉搜索树的特点,*priority*满足堆的特点. 树的高度最坏情况下是*O(n)*.但是在随机优先度的情况下树的高度的期望是*O(log n)*
+
+        I. `search`: 与**BST**的搜索一样
+
+        II. `insert`: 先插入key,然后通过旋转使新节点的*priority*满足堆的特点.
+
+        III. `delete`: 先找到待删除的结点*z*,然后通过旋转将*z*换到叶节点再删除.
+
+        IV. `join`: 先插入一个*root*节点,将*root*节点换到叶子节点再删除就是合并起来的树.
+
+        V. `split`: 插入一个`<key, -IFINITE>`的节点,最后删掉之后左右子树就是要分割的两部分
+
 11. Sorting: merge sort, quick sort
 
 12. Set
