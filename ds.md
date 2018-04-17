@@ -63,7 +63,24 @@
 
 6. Priority queue
 
-7. Heap
+7. Heap: *heap*是利用数组来模拟一个二叉树，可以用来实现*priority queue*和*heap sort*.
+
+    * 特点
+        >root： 是堆的第一个元素;
+        >parent(i) = i/2;
+        >left(i) = 2i; right(i) = 2i + 1 <br>
+        >max-heap: 节点的key >= 节点的子节点的key 
+    * build_max_heap: 将一个无序的数组转化成一个堆. **O(n)**
+    * max_heapify: correct a single violation of the heap property in a subtree's root. 在每次调用*max_heapify*之前保证左子树和右子树都是*max_heap*,在每次调用之后整个树都是*max_heap*. *O(lg n)*.
+    * heap sort. O(nlog n)
+
+        a. build_max_heap
+
+        b. find max with A[1]
+
+        c. Swap A[1] with A[n]
+
+        d. Decrease heap size by 1. Run *max_heapify* over A[1] since A[1] may violate heap property.
 
 8. Hash table
 
