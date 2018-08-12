@@ -1,0 +1,1 @@
+*  https://javadeveloperzone.com/spring-boot/spring-boot-add-custom-response-headers/#22_Add_custom_header_usingResponseEntity
